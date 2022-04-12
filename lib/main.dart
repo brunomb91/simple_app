@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: 'Navigation Basics',
     home: FirstRoute(),
     debugShowCheckedModeBanner: false,
@@ -9,8 +9,8 @@ void main() {
 }
 
 class FirstRoute extends StatelessWidget {
-  const FirstRoute({Key? key}) : super(key: key);
-  TextEditingController get contr => TextEditingController();
+  FirstRoute({Key? key}) : super(key: key);
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class FirstRoute extends StatelessWidget {
               children: [
                 Expanded(
                     child: TextField(
-                  controller: contr,
+                  controller: controller,
                   decoration:
                       InputDecoration(labelText: "Insira aqui sua mensagem: "),
                 )),
@@ -41,10 +41,13 @@ class FirstRoute extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => SecondRoute(
-                                word: contr.text,
+                                word: controller.text,
                               )),
                     );
                   },
+                ),
+                SizedBox(
+                  width: 20,
                 ),
               ],
             ),
